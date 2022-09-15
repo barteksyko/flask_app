@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method='POST'>
+        <div class="rangeslider">
+            <h1>TO1</h1>
+            <input type="range" name="TO1" min="0" max="50" value="0" class="myslider" id="sliderRange">
+            <p>
+                <span id="demo"></span>
+            </p>
+
+            <h1>TO2</h1>
+            <input type="range" name="TO2" min="0" max="50" value="0" class="myslider" id="sliderRange2">
+            <p>
+                <span id="demo2"></span>
+            </p>
+
+            <h1>ODZ</h1>
+            <input type="range" name="ODZ" min="0" max="50" value="0" class="myslider" id="sliderRange3">
+            <p>
+                <span id="demo3"></span>
+            </p>
+
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label" for="defaultCheck1">
+                TO1 <span id="checkdemo"></span>
+            </label>
+
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+            <label class="form-check-label" for="defaultCheck2">
+                TO2 <span id="checkdemo2"></span>
+            </label>
+
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck3">
+            <label class="form-check-label" for="defaultCheck3">
+                ODZ <span id="checkdemo3"></span>
+            </label>
+
+        </div>
+        <script>
+            const Http = new XMLHttpRequest();
+            var rangeslider = document.getElementById("sliderRange");
+            var rangeslider2 = document.getElementById("sliderRange2");
+            var rangeslider3 = document.getElementById("sliderRange3");
+            var check1 = document.getElementById("defaultCheck1");
+            var check2 = document.getElementById("defaultCheck2");
+            var check3 = document.getElementById("defaultCheck3");
+            var output = document.getElementById("demo");
+            var output2 = document.getElementById("demo2");
+            var output3 = document.getElementById("demo3");
+            var checkoutput = document.getElementById("checkdemo");
+            var checkoutput2 = document.getElementById("checkdemo2");
+            var checkoutput3 = document.getElementById("checkdemo3");
+            var current;
+            var current2;
+            var currnet3;
+            var checkValue;
+            var checkValue2;
+            var checkValue3;
+
+            rangeslider.oninput = function () {
+                current = this.value;
+                output.innerHTML = current;
+                Http.open('POST', '/slider_update')
+                Http.send(current)
+            }
+            rangeslider2.oninput = function () {
+                current2 = this.value;
+                output.innerHTML = current2;
+                Http.open('POST', '/slider_update2')
+                Http.send(current2)
+            }
+            rangeslider3.oninput = function () {
+                currnet3 = this.value;
+                output.innerHTML = currnet3;
+                Http.open('POST', '/slider_update3')
+                Http.send(currnet3)
+            }
+            check1.oninput = function () {
+                checkValue = this.checked;
+                checkoutput.innerHTML = checkValue;
+                Http.open('POST', '/check_update')
+                Http.send(checkValue)
+            }
+            check2.oninput = function () {
+                checkValue2 = this.checked;
+                checkoutput2.innerHTML = checkValue2;
+                Http.open('POST', '/check_update2')
+                Http.send(checkValue2)
+            }
+            check3.oninput = function () {
+                checkValue3 = this.checked;
+                checkoutput3.innerHTML = checkValue3;
+                Http.open('POST', '/check_update3')
+                Http.send(checkValue3)
+            }
+        </script>
+    </form>
+</body>
+
+</html>
