@@ -43,6 +43,10 @@
             <label class="form-check-label" for="defaultCheck3">
                 ODZ <span id="checkdemo3"></span>
             </label>
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
+            <label class="form-check-label" for="defaultCheck4">
+                Remote/Local <span id="checkdemo3"></span>
+            </label>
 
         </div>
         <script>
@@ -65,6 +69,7 @@
             var checkValue;
             var checkValue2;
             var checkValue3;
+            var checkValue4;
 
             rangeslider.oninput = function () {
                 current = this.value;
@@ -100,6 +105,12 @@
                 checkValue3 = this.checked;
                 checkoutput3.innerHTML = checkValue3;
                 Http.open('POST', '/check_update3')
+                Http.send(checkValue3)
+            }
+            check4.oninput = function () {
+                checkValue3 = this.checked;
+                checkoutput3.innerHTML = checkValue4;
+                Http.open('POST', '/check_update4')
                 Http.send(checkValue3)
             }
         </script>
