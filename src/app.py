@@ -50,7 +50,6 @@ def flask_app():
             motor_TO1.value = received_data
             lcd.clear()
             lcd.message("TO1 Hz: %.2f" % (received_data * 50))
-
             return str(received_data)
 
         @app.route("/slider_update2", methods=["POST", "GET"])
@@ -99,6 +98,8 @@ def flask_app():
             if received_data == "false":
                 work_led_TO2.off()
                 motor_TO2.stop()
+                work_led_ODZ.off()
+                motor_ODZ.stop()
 
             elif received_data == "true":
                 work_led_TO2.on()
@@ -131,10 +132,8 @@ def flask_app():
                 motor_ODZ.stop()
 
             elif received_data == "true":
-                if switch_ODZ.is_pressed:
-                    work_led_ODZ.on()
-                    motor_ODZ.forward()
-
+                work_led_ODZ.on()
+                motor_ODZ.forward()
             return received_data
 
         app.run()
