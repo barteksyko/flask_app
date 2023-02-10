@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FlaskApp_Control</title>
 </head>
 
 <body>
@@ -43,9 +43,10 @@
             <label class="form-check-label" for="defaultCheck3">
                 ODZ <span id="checkdemo3"></span>
             </label>
+
             <input class="form-check-input" type="checkbox" value="" id="defaultCheck4">
             <label class="form-check-label" for="defaultCheck4">
-                Remote/Local <span id="checkdemo3"></span>
+                Remote/Local <span id="checkdemo4"></span>
             </label>
 
         </div>
@@ -57,12 +58,15 @@
             var check1 = document.getElementById("defaultCheck1");
             var check2 = document.getElementById("defaultCheck2");
             var check3 = document.getElementById("defaultCheck3");
+            var check4 = document.getElementById("defaultCheck4");
             var output = document.getElementById("demo");
             var output2 = document.getElementById("demo2");
             var output3 = document.getElementById("demo3");
+            // var output4 = document.getElementById("demo4");
             var checkoutput = document.getElementById("checkdemo");
             var checkoutput2 = document.getElementById("checkdemo2");
             var checkoutput3 = document.getElementById("checkdemo3");
+            var checkoutput4 = document.getElementById("checkdemo4");
             var current;
             var current2;
             var currnet3;
@@ -108,10 +112,10 @@
                 Http.send(checkValue3)
             }
             check4.oninput = function () {
-                checkValue3 = this.checked;
-                checkoutput3.innerHTML = checkValue4;
+                checkValue4 = this.checked;
+                checkoutput4.innerHTML = checkValue4;
                 Http.open('POST', '/check_update4')
-                Http.send(checkValue3)
+                Http.send(checkValue4)
             }
         </script>
     </form>
